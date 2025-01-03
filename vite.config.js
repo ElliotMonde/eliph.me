@@ -13,9 +13,5 @@ export default defineConfig(({mode}) => {
     server: {
       port: `${env.PORT}`
     },
-    build: {
-      outDir: 'dist',
-      assetsDir: 'assets'
-    }
   }
 })
