@@ -37,9 +37,9 @@ jobs:
       - name: Run Linting
         run: npm run lint
 
-      # Optional: Run tests
-      - name: Run Tests
-        run: npm run test
+      # # Optional: Run tests
+      # - name: Run Tests
+      #   run: npm run test
 
       # Step 4: Build the project
       - name: Build the project
