@@ -1,9 +1,9 @@
 import { useState } from 'react'
-export default function MenuUnderline(props) {
+export default function MenuUnderline({ str }) {
     const [onMenuHover, setOnMenuHover] = useState(false);
     return (
         <span className='p-3' onMouseEnter={() => { setOnMenuHover(true) }} onMouseLeave={() => { setOnMenuHover(false) }}>
-            {props.str}
+            {str}
             <div className={onMenuHover ? `underline-border-hover` : `underline-border`} />
         </span>)
 }

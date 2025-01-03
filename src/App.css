@@ -21,6 +21,7 @@
     border-bottom: black solid 2px;
     width: 0%;
     justify-self: center;
+    border-radius: 15%
   }
   .underline-border-hover {
     @apply underline-border w-full;
@@ -28,9 +29,9 @@
 }
 #root {
   font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', Times, serif;
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 10rem;
   text-align: center;
 }
 
