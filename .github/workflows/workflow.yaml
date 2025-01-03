@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,6 +45,22 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+  deploy:       
+      name: Deploy
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Download artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: production-files
+            path: ./dist
       # Step 5: Deploy to GitHub Pages (push build to gh-pages branch)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
