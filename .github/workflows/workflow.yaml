@@ -1,18 +1,14 @@
-# Workflow for deploying content to GitHub Pages from vite.dev/guide
-
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes to the development branch
   push:
-    branches: 
+    branches:
       - development
-    
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: 'pages'
   cancel-in-progress: true
@@ -30,29 +26,29 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 # Use the Node.js version compatible with your project
+          node-version: 18
           cache: 'npm'
 
       # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Example: Run Linting
+      # Optional: Run linting
       - name: Run Linting
         run: npm run lint
-      
-      # Example: Run Tests
-      # - name: Run Tests
-      #   run: npm run test
-      
+
+      # Optional: Run tests
+      - name: Run Tests
+        run: npm run test
+
       # Step 4: Build the project
       - name: Build the project
         run: npm run build
 
-      # Step 5: Deploy to GitHub Pages
+      # Step 5: Deploy to GitHub Pages (push build to gh-pages branch)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./dist # Path to your built app
-          cname: eliph.me 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Path to your built app
+          cname: eliph.me      # Your custom domain, if applicable
