@@ -9,7 +9,7 @@ export default defineConfig(({mode}) => {
       _APP_ENV__: JSON.stringify(env.APP_ENV)
     },
     plugins: [react()],
-    base: `/`,
+    base: `/${env.BASE_URL}/`,
     server: {
       port: `${env.PORT}`
     },
