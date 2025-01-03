@@ -1,4 +1,33 @@
+@import url("fonts.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  span {
+    @apply text-2xl;
+  }
+}
+
+@layer components {
+  .underline-border {
+    @apply transition-all duration-500;
+    padding-top: 5px;
+    border-bottom: black solid 2px;
+    width: 0%;
+    justify-self: center;
+  }
+  .underline-border-hover {
+    @apply underline-border w-full;
+  }
+}
 #root {
+  font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', Times, serif;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
