@@ -12,10 +12,10 @@ export default function MenuUnderline({ str }) {
         gsap.set(`.${classArray}`, { transformStyle: 'perserve-3d' });
         gsap.set([`.${classArray[1]}`, `.${classArray[2]}`], { rotateX: -90, y: 15, opacity: 0 });
         gsap.from(`.${classArray[0]}`, { rotationX: 0, y: 0, opacity: 1 });
-        gsap.to(`.${classArray[0]}`, { rotationX: 90, y: -15, opacity: 0, duration: 0.35, delay: 0.2 });
-        gsap.to(`.${classArray[1]}`, { rotateX: 0, y: 0, opacity: 1, duration: 0.175, delay: 0.30 });
-        gsap.to(`.${classArray[1]}`, { rotateX: 90, y: -15, opacity: 1, duration: 0.175, delay: 0.500 });
-        gsap.to(`.${classArray[2]}`, { rotateX: 0, y: 0, opacity: 1, duration: 0.35, delay: 0.95 });
+        gsap.to(`.${classArray[0]}`, { rotationX: 90, y: -15, opacity: 0, duration: 0.7, delay: 0.2 });
+        gsap.to(`.${classArray[1]}`, { rotateX: 0, y: 0, opacity: 1, duration: 0.35, delay: 0.4 });
+        gsap.to(`.${classArray[1]}`, { rotateX: 90, y: -15, opacity: 1, duration: 0.35, delay: 0.8 });
+        gsap.to(`.${classArray[2]}`, { rotateX: 0, y: 0, opacity: 1, duration: 0.7, delay: 1.1 });
     });
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function MenuUnderline({ str }) {
     }, [onMenuHover])
 
     return (
-        <span ref={container} className='p-3 flex flex-col' onMouseEnter={() => {
+        <span ref={container} className='p-3 flex flex-col w-fit' onMouseEnter={() => {
             setOnMenuHover(true);
         }} onMouseLeave={() => setOnMenuHover(false)} >
             <span className={`${classArray[0]} z-[1]`}>{str}</span>

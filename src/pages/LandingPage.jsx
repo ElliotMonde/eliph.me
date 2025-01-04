@@ -1,10 +1,9 @@
 import Logo from "../components/Logo/Logo";
-import Header from "../components/Header";
+import "../App.css";
 export default function LandingPage() {
 
     return (
-        <div className="h-dvh py-[2rem] xl:px-[10rem] px-[3rem]">
-            <Header/>
+        <div className="h-dvh spacing">
             <Logo/>
         </div>
     )
