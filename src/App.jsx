@@ -1,6 +1,5 @@
-import './App.css'
-import Header from './components/Header'
-import LandingPage from './pages/LandingPage'
+import './App.css';
+import LandingPage from './pages/LandingPage';
 
 export default function App() {
   return (

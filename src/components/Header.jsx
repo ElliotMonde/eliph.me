@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import MenuUnderline from "./MenuUnderline";
 import { BurgerIcon } from "../assets/svgIcons";
 
@@ -10,8 +11,8 @@ export default function Header() {
                     <MenuUnderline str={str} key={str} />
                 )}
             </nav>
-            <nav className="visible xl:hidden ">
-                <BurgerIcon />
+            <nav className="visible xl:hidden absolute">
+                <button><BurgerIcon /></button>
             </nav>
         </>
     )
