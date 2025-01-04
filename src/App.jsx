@@ -1,10 +1,11 @@
 import './App.css'
 import Header from './components/Header'
+import LandingPage from './pages/LandingPage'
 
 export default function App() {
   return (
-    <div>
-      <Header/>
-    </div>
+    <>
+      <LandingPage/>
+    </>
   )
 }
