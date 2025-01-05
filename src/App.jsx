@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useContext } from 'react';
 import { HoverContext } from './HoverProvider';
+import { DarkModeContext } from './DarkModeProvider';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import './App.css';
@@ -7,6 +8,7 @@ import Header from './components/Header';
 import LandingPage from './pages/LandingPage';
 export default function App() {
   const { isHovering } = useContext(HoverContext);
+  const { isDarkMode } = useContext(DarkModeContext);
   gsap.registerPlugin(useGSAP);
   const container = useRef();
   const cursor = useRef();
@@ -21,17 +23,17 @@ export default function App() {
         x: x,
         y: y,
         duration: 0.6,
-        ease: "power2",
+        ease: "power1",
         overwrite: true
       });
     }
   }
-
   useLayoutEffect(() => {
     container.current.addEventListener("mousemove", onCursorMove);
   }, []);
+
   return (
-    <div ref={container}>
+    <div ref={container} className={isDarkMode ? 'dark' : ''}>
       <div ref={cursor} className={`cursor ${isHovering ? 'w-[120px] h-[120px]' : ''}`} />
         <Header />
         <LandingPage />

@@ -10,15 +10,15 @@ export default function Header() {
     }, [])
 
     return (
-        <div className='absolute w-full m-0 p-0 spacing'>
-            <nav className="justify-end lg:flex flex-row gap-11 hidden lg:visible">
+        <div className='absolute w-full'>
+            <nav className="justify-end lg:flex flex-row gap-11 hidden lg:visible spacing">
                 {navTitles.map(str =>
                     <MenuUnderline str={str} key={str} />
                 )}
             </nav>
             <nav className="visible lg:hidden w-full flex flex-col">
-                <button onClick={() => { setIsNavClosed(!isNavClosed) }}><BurgerIcon /></button>
-                <div className={`${isNavClosed ? `hidden` : ``} flex flex-col h-[90vh] bg-white`}>
+                <button className="spacing" onClick={() => { setIsNavClosed(!isNavClosed) }}><BurgerIcon /></button>
+                <div className={`${isNavClosed ? `hidden` : ``} flex flex-col h-dvh w-dvw theme`}>
                     {navTitles.map(str => <MenuUnderline str={str} key={str} />)}
                 </div>
             </nav>

@@ -18,6 +18,9 @@
   .spacing {
     @apply py-[2rem] xl:px-[10rem] px-[3rem];
   }
+  .dark {
+    @apply text-white bg-black;
+  }
 }
 
 @layer components {
@@ -27,30 +30,38 @@
     border-bottom: black solid 2px;
     width: 0%;
     justify-self: center;
-    border-radius: 15%
+    border-radius: 15%;
   }
   .underline-border-hover {
     @apply underline-border w-full;
   }
-  .cursor { /* cursor only for desktop screens */
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(white, white,#199b9a,#BB55FF, #BB55FF);
-    top: 50%;
-    left: 50%;
-    width: 70px;
-    height:70px;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    pointer-events: none;
-    transition: width 300ms, height 300ms;
+  @media only screen and (min-width: 1024px) {
+    .cursor {
+      /* cursor only for desktop screens */
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(white, white, #199b9a, #bb55ff, #bb55ff);
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 70px;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      transition: width 300ms, height 300ms;
+    }
   }
 }
 #root {
-  font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', Times, serif;
+  font-family: "Averia Serif Libre", Georgia, "Times New Roman", Times, serif;
   width: 100%;
   background-color: #fff8e3;
   margin: 0 auto;
   z-index: 1;
-  cursor: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  #root {
+      cursor: none;
+  }
 }
