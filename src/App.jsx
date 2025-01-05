@@ -17,7 +17,7 @@ export default function App() {
     const radius = cursor.current.getBoundingClientRect().width / 2;
     const x = e.x - width / 2 - radius;
     const y = e.y - height / 2 - radius;
-    // console.log(`e.x: ${e.x},\ne.y: ${e.y},\nwidth:${width},\nheight: ${height},\ntop: ${top},\nleft: ${left}`);
+
     if (e.x < width - radius && e.y < height - radius) {
       gsap.to('.cursor', {
         x: x,
@@ -33,7 +33,7 @@ export default function App() {
   }, []);
 
   return (
-    <div ref={container} className={isDarkMode ? 'dark' : ''}>
+    <div ref={container} className={`${isDarkMode ? 'dark' : ''} transition-colors ease-in-out duration-700`}>
       <div ref={cursor} className={`cursor ${isHovering ? 'w-[120px] h-[120px]' : ''}`} />
         <Header />
         <LandingPage />

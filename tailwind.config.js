@@ -11,6 +11,7 @@ export default {
     colors: {
       'black': '#000000',
       'white': '#ffffff',
+      'bgColor': '#fff8e3',
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],

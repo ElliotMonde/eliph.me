@@ -1,8 +1,9 @@
 import MenuUnderline from "./MenuUnderline";
 import { BurgerIcon } from "../assets/svgIcons";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { DarkModeContext } from "../DarkModeProvider";
 export default function Header() {
+    const { isDarkMode } = useContext(DarkModeContext);
     const [isNavClosed, setIsNavClosed] = useState(true);
     const navTitles = ["projects", "misc", "contact"];
     useEffect(() => {
@@ -10,15 +11,15 @@ export default function Header() {
     }, [])
 
     return (
-        <div className='absolute w-full'>
+        <div className='absolute right-0 '>
             <nav className="justify-end lg:flex flex-row gap-11 hidden lg:visible spacing">
                 {navTitles.map(str =>
                     <MenuUnderline str={str} key={str} />
                 )}
             </nav>
-            <nav className="visible lg:hidden w-full flex flex-col">
+            <nav className="visible lg:hidden w-full flex flex-col min-h-screen">
                 <button className="spacing" onClick={() => { setIsNavClosed(!isNavClosed) }}><BurgerIcon /></button>
-                <div className={`${isNavClosed ? `hidden` : ``} flex flex-col h-dvh w-dvw theme`}>
+                <div className={`${isNavClosed ? `hidden` : ``} flex-1 flex flex-col w-dvw ${isDarkMode ? 'dark' : 'bg-bgColor' }`}>
                     {navTitles.map(str => <MenuUnderline str={str} key={str} />)}
                 </div>
             </nav>

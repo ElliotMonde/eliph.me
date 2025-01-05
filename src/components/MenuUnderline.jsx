@@ -28,16 +28,17 @@ export default function MenuUnderline({ str }) {
             onHoverAnimation(classArray);
         };
         setIsHovering(onMenuHover);
+
     }, [onMenuHover])
 
     return (
         <button>
-            <span ref={container} className='p-3 flex flex-col w-fit' onMouseEnter={() => {
+            <span ref={container} className='p-6 flex flex-col w-fit' onMouseEnter={() => {
                 setOnMenuHover(true);
             }} onMouseLeave={() => setOnMenuHover(false)} >
-                <span className={`${classArray[0]} z-[1]`}>{str}</span>
-                <span className={`${classArray[1]} z-[1] absolute`}>{str}</span>
-                <span className={`${classArray[2]} z-[1] absolute`}>{str}</span>
+                <span className={`${classArray[0]}`}>{str}</span>
+                <span className={`${classArray[1]} absolute`}>{str}</span>
+                <span className={`${classArray[2]} absolute`}>{str}</span>
                 <div className={onMenuHover ? `underline-border-hover` : `underline-border`} />
             </span>
         </button>)
