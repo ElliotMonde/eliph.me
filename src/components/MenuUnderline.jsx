@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useRef, useState, useEffect, useContext } from 'react';
-import { HoverContext } from '../HoverProvider';
+import { HoverContext } from '../Providers';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 export default function MenuUnderline({ str }) {

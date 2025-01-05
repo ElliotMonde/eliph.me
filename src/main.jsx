@@ -1,14 +1,15 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
-import { HoverProvider } from './HoverProvider.jsx';
-import { DarkModeProvider } from './DarkModeProvider.jsx';
+import { HoverProvider, DarkModeProvider, MobileProvider } from './Providers.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <DarkModeProvider>
-    <HoverProvider>
-      <App />
-      </HoverProvider>
+      <MobileProvider>
+        <HoverProvider>
+          <App />
+        </HoverProvider>
+      </MobileProvider>
     </DarkModeProvider>
   </StrictMode>,
 )

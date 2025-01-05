@@ -1,5 +1,5 @@
 import { useContext, useRef, useEffect } from 'react';
-import { HoverContext } from '../HoverProvider';
+import { HoverContext } from '../Providers';
 import Subheader from './Subheader';
 export default function Logo() {
     const logoRef = useRef();

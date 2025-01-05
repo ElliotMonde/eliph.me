@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { DarkModeContext } from '../DarkModeProvider';
+import { DarkModeContext } from '../Providers';
 import { MoonIcon, SunIcon } from "../assets/svgIcons";
 
 export default function DarkModeButton() {

@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useContext } from 'react';
-import { HoverContext } from './HoverProvider';
-import { DarkModeContext } from './DarkModeProvider';
+import { HoverContext, DarkModeContext, MobileContext } from './Providers';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import './App.css';
@@ -9,6 +8,7 @@ import LandingPage from './pages/LandingPage';
 export default function App() {
   const { isHovering } = useContext(HoverContext);
   const { isDarkMode } = useContext(DarkModeContext);
+  const { isMobile, setIsMobile } = useContext(MobileContext);
   gsap.registerPlugin(useGSAP);
   const container = useRef();
   const cursor = useRef();
@@ -30,13 +30,16 @@ export default function App() {
   }
   useLayoutEffect(() => {
     container.current.addEventListener("mousemove", onCursorMove);
+    window.addEventListener("resize", (e) => {
+      setIsMobile(e.target.innerWidth < 1024)
+    });
   }, []);
 
   return (
     <div ref={container} className={`${isDarkMode ? 'dark' : ''} transition-colors ease-in-out duration-700`}>
-      <div ref={cursor} className={`cursor ${isHovering ? 'w-[120px] h-[120px]' : ''}`} />
-        <Header />
-        <LandingPage />
+      <div ref={cursor} className={`cursor ${isHovering ? 'w-[120px] h-[120px]' : ''} ${isMobile ? 'hidden' : ''}`} />
+      <Header />
+      <LandingPage />
     </div>
   )
 }

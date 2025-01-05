@@ -1,7 +1,7 @@
 import MenuUnderline from "./MenuUnderline";
 import { BurgerIcon } from "../assets/svgIcons";
 import { useState, useEffect, useContext } from "react";
-import { DarkModeContext } from "../DarkModeProvider";
+import { DarkModeContext } from "../Providers";
 export default function Header() {
     const { isDarkMode } = useContext(DarkModeContext);
     const [isNavClosed, setIsNavClosed] = useState(true);
