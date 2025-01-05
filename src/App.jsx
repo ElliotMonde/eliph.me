@@ -21,7 +21,7 @@ export default function App() {
         x: x,
         y: y,
         duration: 0.6,
-        ease: "power1",
+        ease: "power2",
         overwrite: true
       });
     }

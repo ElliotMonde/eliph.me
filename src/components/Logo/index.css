@@ -1,5 +1,6 @@
+@import url('../../fonts.css');
 .logo {
-    font-family: 'Averia Serif Libre', 'Inter', Helvetica, serif;
+    @apply averia-serif-libre-bold;
     font-size: 10rem;
-    font-weight: bold;
+
 }
