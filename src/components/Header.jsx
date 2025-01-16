@@ -1,7 +1,7 @@
 import MenuUnderline from "./MenuUnderline";
-import { BurgerIcon } from "../assets/svgIcons";
 import { useState, useEffect, useContext } from "react";
 import { DarkModeContext } from "../Providers";
+import { BurgerIcon } from "../assets/svgIcons";
 export default function Header() {
     const { isDarkMode } = useContext(DarkModeContext);
     const [isNavClosed, setIsNavClosed] = useState(true);
@@ -19,7 +19,7 @@ export default function Header() {
             </nav>
             <nav className="visible lg:hidden w-full flex flex-col min-h-screen">
                 <button className="spacing" onClick={() => { setIsNavClosed(!isNavClosed) }}><BurgerIcon /></button>
-                <div className={`${isNavClosed ? `hidden` : ``} flex-1 flex flex-col w-dvw ${isDarkMode ? 'dark' : 'bg-bgColor' }`}>
+                <div className={`${isNavClosed ? `hidden` : ``} flex-1 flex flex-col w-dvw z-[9] ${isDarkMode ? 'dark' : 'bg-bgColor' }`}>
                     {navTitles.map(str => <MenuUnderline str={str} key={str} />)}
                 </div>
             </nav>
