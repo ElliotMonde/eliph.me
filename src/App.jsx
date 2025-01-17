@@ -9,7 +9,7 @@ export default function App() {
   const { isDarkMode } = useContext(DarkModeContext);
   const container = useRef();
   return (
-    <div ref={container} className={`${isDarkMode ? 'dark' : ''} transition-colors ease-in-out duration-700`}>
+    <div ref={container} className={`${isDarkMode ? 'dark' : ''} bg-transition`}>
       <Cursor parent_ref={container}/>
       <Header />
       <LandingPage />

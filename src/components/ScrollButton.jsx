@@ -13,7 +13,7 @@ export function ScrollButton() {
     useEffect(() => {
         pulse();
      }, []);
-    return (<button ref={scrollButton} className=" scroll-button flex flex-col items-center absolute bottom-5 left-1/2 z-[8]">
+    return (<button ref={scrollButton} className=" scroll-button flex flex-col items-center absolute bottom-5 left-0 right-0 z-[8]">
         <p>scroll</p>
         <DownChevron />
     </button>)

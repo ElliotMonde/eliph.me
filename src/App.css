@@ -16,7 +16,10 @@
 
 @layer utilities {
   .spacing {
-    @apply py-[2rem] xl:px-[10rem] px-[3rem];
+    @apply py-[2rem] xl:px-[4rem] px-[3rem];
+  }
+  .bg-transition {
+    @apply transition-colors ease-in-out duration-700;
   }
   .dark {
     @apply text-white bg-black;
