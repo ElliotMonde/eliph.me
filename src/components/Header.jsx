@@ -11,7 +11,7 @@ export default function Header() {
     }, [])
 
     return (
-        <div className='absolute right-0'>
+        <div className='absolute right-0 z-[999]'>
             <nav className="justify-end lg:flex flex-row gap-11 hidden lg:visible spacing">
                 {navTitles.map(str =>
                     <MenuUnderline str={str} key={str} />

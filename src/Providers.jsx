@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useLayoutEffect, useState } from "react";
 
 
 /* For cursor to check if it is hovering over a clickable component */
@@ -31,5 +31,21 @@ export const MobileProvider = ({ children }) => {
         <MobileContext.Provider value={{isMobile, setIsMobile}}>
             {children}
         </MobileContext.Provider>
+    )
+}
+
+export const ScrollContext = createContext();
+export const ScrollProvider = ({ children }) => { 
+    const [scrollHeight, setScrollHeight] = useState(window.scrollHeight - window.innerHeight);
+    useLayoutEffect(() => { 
+        window.addEventListener("scroll", () => {
+            setScrollHeight(window.scrollHeight - window.innerHeight);
+            console.log(window.scrollHeight - window.innerHeight);
+        });
+    })
+    return (
+        <ScrollContext.Provider value={{scrollHeight}}>
+            { children }
+        </ScrollContext.Provider>
     )
 }

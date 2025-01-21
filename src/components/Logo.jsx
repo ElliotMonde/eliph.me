@@ -1,8 +1,9 @@
 import { useContext, useRef, useEffect } from 'react';
-import { HoverContext } from '../Providers';
+import { DarkModeContext, HoverContext } from '../Providers';
 import Subheader from './Subheader';
 export default function Logo() {
     const logoRef = useRef();
+    const { isDarkMode } = useContext(DarkModeContext);
     const { setIsHovering } = useContext(HoverContext);
     useEffect(() => {
         logoRef.current.addEventListener('mouseenter', () => { setIsHovering(true) });
@@ -10,7 +11,7 @@ export default function Logo() {
     }, [])
     
     return (
-        <div className='flex flex-col w-auto mt-[25vh]'>
+        <div className={`absolute flex flex-col w-auto top-[25vh] ${ isDarkMode ? 'mix-blend-difference' : ''} z-[999]`}>
             <div ref={logoRef} className='averia-serif-libre-bold lg:text-[10rem] text-[5rem] flex flex-col w-fit'>
                 eliph.
             </div>
