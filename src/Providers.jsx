@@ -33,19 +33,3 @@ export const MobileProvider = ({ children }) => {
         </MobileContext.Provider>
     )
 }
-
-export const ScrollContext = createContext();
-export const ScrollProvider = ({ children }) => { 
-    const [scrollHeight, setScrollHeight] = useState(window.scrollHeight - window.innerHeight);
-    useLayoutEffect(() => { 
-        window.addEventListener("scroll", () => {
-            setScrollHeight(window.scrollHeight - window.innerHeight);
-            console.log(window.scrollHeight - window.innerHeight);
-        });
-    })
-    return (
-        <ScrollContext.Provider value={{scrollHeight}}>
-            { children }
-        </ScrollContext.Provider>
-    )
-}

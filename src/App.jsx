@@ -9,7 +9,7 @@ export default function App() {
   
   const container = useRef();
   return (
-    <div ref={container} className={`${isDarkMode ? 'dark' : ''} bg-transition overflow-x-hidden overflow-y-scroll h-[300vh] w-dvw`}>
+    <div ref={container} className={`${isDarkMode ? 'dark' : ''} bg-transition overflow-x-hidden overflow-y-scroll  w-dvw`}>
       <Cursor parent_ref={container} />
       <Header />
       <LandingPage />
