@@ -8,15 +8,15 @@ import { DarkModeContext } from "../Providers";
 export default function LandingPage() {
     const { isDarkMode } = useContext(DarkModeContext);
     return (
-        <div className="overflow-y-scroll h-[300vh]">
-            <div className={`absolute w-dvw h-dvh ${isDarkMode ? '' : 'opacity-85'}`}>
+        <div className="absolute h-fit">
+            <div className="h-dvh"></div>
+            <div className={`w-dvw h-dvh ${isDarkMode ? '' : 'opacity-85'}`}>
                 <ShaderBg />
             </div>
-            <div className="h-dvh spacing overflow-hidden">
+            {/* overlaying components */}
                 <Logo />
                 <ScrollButton />
                 <DarkModeButton />
-            </div>
         </div>
     )
 }

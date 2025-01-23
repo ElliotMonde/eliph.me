@@ -9,9 +9,9 @@ export default function Logo() {
         logoRef.current.addEventListener('mouseenter', () => { setIsHovering(true) });
         logoRef.current.addEventListener('mouseleave', () => { setIsHovering(false) });
     }, [])
-    
+
     return (
-        <div className={`absolute flex flex-col w-auto top-[25vh] ${ isDarkMode ? 'mix-blend-difference' : ''} z-[999]`}>
+        <div className={`fixed flex flex-col w-auto left-20 top-[25vh] ${isDarkMode ? 'mix-blend-difference' : ''} z-4`}>
             <div ref={logoRef} className='averia-serif-libre-bold lg:text-[10rem] text-[5rem] flex flex-col w-fit'>
                 eliph.
             </div>
