@@ -3,43 +3,53 @@ import "../App.css";
 import DarkModeButton from "../components/DarkModeButton";
 import { ScrollButton } from "../components/ScrollButton";
 import ShaderBg from "../components/ShaderBg";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { DarkModeContext } from "../Providers";
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Header from "../components/Header";
 
 export default function LandingPage() {
     const { isDarkMode } = useContext(DarkModeContext);
     gsap.registerPlugin(ScrollTrigger);
-    // const panels = gsap.utils.toArray(panel);
-    gsap.to(".panel", {
-        scrollTrigger: {
-            trigger: ".panel",
-            pin: true,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 2,
-            snap: {
-                snapTo: 1 / 4,
-                duration: 1,
-                ease: "power1.inOut"
-            },
-        }
+    useEffect(() => {
+        const panels = gsap.utils.toArray(".panel");
+        panels.map(panel => {
+            gsap.to(panel._gsap, {
+                scrollTrigger: {
+                    trigger: panel._gsap,
+                    pin: true,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                    snap: {
+                        snapTo: 1 / 4,
+                        duration: 0.5,
+                        ease: "power1.inOut"
+                    },
+                }
+            });
+        })
     });
- 
-    
+
+    const navDict = {
+        "projects": useRef(),
+        "contacts": useRef(),
+        "misc": useRef()
+    }
+
     return (
-        <div className="scroll_container flex flex-col min-h-fit">
-            <section className="panel h-dvh"> 1 panel</section>
-            <section className="panel h-dvh mt-0 pt-0"> 2 panel
-            {/* <span className="fixed top-[60vh] left-20">My name is Elliot. I'm a Computer Science undergraduate and aspiring Software Engineer.</span> */}
-            </section>
-            <section className={`panel w-dvw h-dvh ${isDarkMode ? '' : 'opacity-85'} mt-0 pt-0`}>
+        <div className="flex flex-col min-h-fit">
+            <section className="first panel h-dvh"> 1 panel</section>
+            <section className={`second panel w-dvw h-dvh ${isDarkMode ? '' : 'opacity-85'} mt-0 pt-0`}>
                 <ShaderBg />
             </section>
-            <section className="panel h-dvh mt-0 pt-0"> 4 panel</section>
-            <section className="panel h-dvh mt-0 pt-0"> 5 panel</section>
+            <section ref={navDict["misc"]} className="third panel h-dvh mt-0 pt-0"> 3 panel
+            </section>
+            <section ref={navDict["projects"]} className="fourth panel h-dvh mt-0 pt-0"> Projects</section>
+            <section ref={navDict["contacts"]} className="fifth panel h-dvh mt-0 pt-0"> Contact</section>
             {/* overlaying components */}
+            <Header navDict={navDict} />
             <Logo />
             <ScrollButton />
             <DarkModeButton />

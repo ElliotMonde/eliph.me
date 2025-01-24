@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useRef, useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { HoverContext } from '../Providers';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-export default function MenuUnderline({ str }) {
+export const MenuUnderline = React.forwardRef(({ str, onNavClick }, ref) => {
     const { setIsHovering } = useContext(HoverContext);
     const [onMenuHover, setOnMenuHover] = useState(false);
-    gsap.registerPlugin(useGSAP);
     const container = useRef();
+    gsap.registerPlugin(useGSAP);
     const { contextSafe } = useGSAP({ scope: container });
     const classArray = [`${str}-menu-item-top`, `${str}-menu-item-mid`, `${str}-menu-item-btm`];
 
@@ -32,8 +32,8 @@ export default function MenuUnderline({ str }) {
     }, [onMenuHover])
 
     return (
-        <button>
-            <span ref={container} className='p-6 flex flex-col w-fit' onMouseEnter={() => {
+        <button onClick={onNavClick}>
+            <span ref={ container }  forwardref={ref} className={`p-6 flex flex-col w-fit ${str}`} onMouseEnter={() => {
                 setOnMenuHover(true);
             }} onMouseLeave={() => setOnMenuHover(false)} >
                 <span className={`${classArray[0]}`}>{str}</span>
@@ -42,4 +42,4 @@ export default function MenuUnderline({ str }) {
                 <div className={onMenuHover ? `underline-border-hover` : `underline-border`} />
             </span>
         </button>)
-}
+})
