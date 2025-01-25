@@ -12,9 +12,9 @@ export default function Header({ navDict }) {
     gsap.registerPlugin(ScrollToPlugin);
 
     const navTitles = {
+        "home": useRef(),
         "projects": useRef(),
-        "contacts": useRef(),
-        "misc": useRef(),
+        "contact": useRef(),
     };
     useEffect(() => {
         window.addEventListener("resize", () => { if (window.innerWidth >= 1024) setIsNavClosed(true) });
@@ -22,6 +22,7 @@ export default function Header({ navDict }) {
 
 
     const onNavClick = (sectionRef) => {
+        setIsNavClosed(true);
         gsap.to(window, {
             scrollTo: sectionRef.current.offsetTop,
             duration: 1
@@ -30,6 +31,7 @@ export default function Header({ navDict }) {
 
     return (
         <div className='header-container fixed right-0 z-50'>
+            { /* Desktop Nav */}
             <nav className="justify-end lg:flex flex-row gap-11 hidden lg:visible spacing">
                 {Object.entries(navTitles).map(([str, ref]) =>
                     <MenuUnderline
@@ -40,6 +42,7 @@ export default function Header({ navDict }) {
                     />
                 )}
             </nav>
+            { /* Mobile Nav */}
             <nav className="visible lg:hidden w-full flex flex-col min-h-screen">
                 <button className="absolute z-10 right-10 top-5" onClick={() => { setIsNavClosed(!isNavClosed) }}><BurgerIcon /></button>
                 <div className={`${isNavClosed ? `hidden` : ``} flex-1 flex flex-col w-dvw z-[9] ${isDarkMode ? 'dark bg-transition' : 'bg-bgColor transition-colors ease-in-out duration-50'}`}>

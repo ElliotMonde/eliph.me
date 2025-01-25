@@ -11,11 +11,16 @@ import Header from "../components/Header";
 
 export default function LandingPage() {
     const { isDarkMode } = useContext(DarkModeContext);
+    const navDict = {
+        "home": useRef(),
+        "projects": useRef(),
+        "contact": useRef(),
+    }
     gsap.registerPlugin(ScrollTrigger);
     useEffect(() => {
         const panels = gsap.utils.toArray(".panel");
-        panels.map(panel => {
-            gsap.to(panel._gsap, {
+        panels.map((panel) => {
+            gsap.to(window, {
                 scrollTrigger: {
                     trigger: panel._gsap,
                     pin: true,
@@ -30,24 +35,18 @@ export default function LandingPage() {
                 }
             });
         })
-    });
-
-    const navDict = {
-        "projects": useRef(),
-        "contacts": useRef(),
-        "misc": useRef()
-    }
+    }, []);
 
     return (
         <div className="flex flex-col min-h-fit">
-            <section className="first panel h-dvh"> 1 panel</section>
+            <section ref={navDict["home"]} className="first panel h-dvh"> 1 panel</section>
             <section className={`second panel w-dvw h-dvh ${isDarkMode ? '' : 'opacity-85'} mt-0 pt-0`}>
                 <ShaderBg />
             </section>
-            <section ref={navDict["misc"]} className="third panel h-dvh mt-0 pt-0"> 3 panel
+            <section className="third panel h-dvh mt-0 pt-0"> 3 panel
             </section>
             <section ref={navDict["projects"]} className="fourth panel h-dvh mt-0 pt-0"> Projects</section>
-            <section ref={navDict["contacts"]} className="fifth panel h-dvh mt-0 pt-0"> Contact</section>
+            <section ref={navDict["contact"]} className="fifth panel h-dvh mt-0 pt-0"> Contact</section>
             {/* overlaying components */}
             <Header navDict={navDict} />
             <Logo />
