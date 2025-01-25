@@ -4,10 +4,11 @@ import fragmentShader from '../shaders/fragmentShader.glsl'
 import vertexShader from '../shaders/vertexShader.glsl'
 import { useRef, useMemo, useContext } from 'react'
 import { MobileContext } from "../Providers"
+import selfPhoto from "../assets/linkedin_photo.png"
 const Cloth = () => {
     const hover = useRef(false);
     const { isMobile } = useContext(MobileContext);
-    const texture = useTexture(import.meta.env.VITE_BASE_DIR + "linkedin_photo.png");
+    const texture = useTexture(selfPhoto);
     const mesh = useRef();
     const centerPostion = isMobile ? [0, 6, 10] : [5, 0, 15];
     
