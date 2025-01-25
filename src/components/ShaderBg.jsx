@@ -7,7 +7,7 @@ import { MobileContext } from "../Providers"
 const Cloth = () => {
     const hover = useRef(false);
     const { isMobile } = useContext(MobileContext);
-    const texture = useTexture("src/assets/linkedin_photo.png" || "assets/linkedin_photo.png");
+    const texture = useTexture(import.meta.env.VITE_BASE_DIR + "linkedin_photo.png");
     const mesh = useRef();
     const centerPostion = isMobile ? [0, 6, 10] : [5, 0, 15];
     
