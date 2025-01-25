@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, useTexture } from '@react-three/drei'
-import fragmentShader from '../shaders/fragmentShader.glsl'
-import vertexShader from '../shaders/vertexShader.glsl'
+import fragmentShader from '../shaders/clothShaders/fragmentShader.glsl'
+import vertexShader from '../shaders/clothShaders/vertexShader.glsl'
 import { useRef, useMemo, useContext } from 'react'
 import { MobileContext } from "../Providers"
 import selfPhoto from "../assets/linkedin_photo.png"

@@ -12,7 +12,7 @@ export function ScrollButton() {
             .to(".scroll-button", { opacity: 1, duration: 2})
     };
     const scrollBehavior = () => gsap.to(window, {
-        scrollTo: (window.pageYOffset + 200),
+        scrollTo: (window.pageYOffset + 100),
         duration: 0.4,
         ease: "power1.Out"
     });
